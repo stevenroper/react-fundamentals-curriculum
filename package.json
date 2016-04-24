@@ -4,7 +4,8 @@
   "description": "Curriculum for React.js Program's React Fundamentals course.",
   "main": "index.js",
   "scripts": {
-    "local": "webpack-dev-server --port 8000"
+    "start": "webpack-dev-server --port 8000",
+    "prod": "webpack -p"
   },
   "repository": {
     "type": "git",
