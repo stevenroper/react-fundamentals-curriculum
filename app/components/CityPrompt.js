@@ -1,17 +1,19 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-var styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    maxWidth: '300px'
-  },
-  space: {
-    marginBottom: '10px',
-    marginRight: '10px'
+function getStyles(props) {
+  return {
+      container: {
+      display: 'flex',
+      flexDirection: props.direction || 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      maxWidth: '300px'
+    },
+    space: {
+      marginBottom: '10px',
+      marginRight: '10px'
+    }
   }
 }
 
@@ -19,7 +21,7 @@ function SubmitButton (props) {
   return (
     <button
       className='btn btn-lrg btn-success'
-      style={styles.space}
+      style={getStyles(props).space}
       onClick={props.onSubmitCity}>
       {props.children}
     </button>
@@ -32,7 +34,7 @@ function CityInput (props) {
       className='form-control'
       placeholder='City, State'
       onChange={props.onUpdateCity}
-      style={styles.space}
+      style={getStyles(props).space}
       type='text'
       value={props.city} />
   )
@@ -40,7 +42,7 @@ function CityInput (props) {
 
 function CityPrompt (props) {
   return (
-    <div style={styles.container}>
+    <div style={getStyles(props).container}>
       <CityInput 
         onUpdateCity={props.onUpdateCity}
         city={props.city} />

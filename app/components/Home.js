@@ -15,7 +15,7 @@ var styles = {
   prompt_title: {
     fontSize: 45,
     color: '#fff',
-    fontWeight: 100,
+    fontWeight: 100
   },
 }
 
