@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var CityPrompt = require('../components/CityPrompt');
+var OpenWeatherHelpers = require('../utils/OpenWeatherHelpers');
 
 var CityPromptContainer = React.createClass({
   getDefaultProps: function () {
@@ -17,7 +18,10 @@ var CityPromptContainer = React.createClass({
     }
   },
   handleSubmitCity: function () {
-    console.log(this.state.city)
+    OpenWeatherHelpers.getCurrentWeatherData(this.state.city)
+      .then(function (data) {
+        console.log(data);
+      });
   },
   handleUpdateCity: function (e) {
     this.setState({
