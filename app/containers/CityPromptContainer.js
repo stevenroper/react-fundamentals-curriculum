@@ -4,6 +4,9 @@ var CityPrompt = require('../components/CityPrompt');
 var OpenWeatherHelpers = require('../utils/OpenWeatherHelpers');
 
 var CityPromptContainer = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getDefaultProps: function () {
     return {
       form_direction: 'column'
@@ -17,11 +20,14 @@ var CityPromptContainer = React.createClass({
       city: ''
     }
   },
-  handleSubmitCity: function () {
-    OpenWeatherHelpers.getCurrentWeatherData(this.state.city)
-      .then(function (data) {
-        console.log(data);
-      });
+  handleSubmitCity: function (e) {
+    e.preventDefault();
+    this.context.router.push({
+      pathname: '/forecast/' + this.state.city,
+      query: {
+        city: this.state.city
+      }
+    });
   },
   handleUpdateCity: function (e) {
     this.setState({
